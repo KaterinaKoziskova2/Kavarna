@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cup & Comfort</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('pozadi.jpeg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
+            color: #4b3621;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: rgba(90, 76, 63, 0.704); 
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 100px;
+            margin-right: 70px;
+        }
+        .logo span {
+            font-family: 'Ariel', serif; 
+            font-size: 25px;
+            font-weight: bold; 
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 350;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            position: relative; 
+        }
+        nav ul li a .cart-icon {
+            font-size: 22px;
+        }
+        nav ul li a .cart-badge {
+            position: absolute;
+            top: -3px; 
+            right: -3px;
+            background-color: rgb(67, 169, 213); 
+            color: white;
+            font-size: 10px;
+            width: 14px; 
+            height: 14px; 
+            border-radius: 50%; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        section {
+            padding: 30px;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.8); 
+            margin: 40px 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+        h2 {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: left; 
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 8px 0;
+        }
+        .menu-item button {
+            background: none; 
+            border: none; 
+            color: #4b3621; 
+            text-align: left;
+            padding: 0;
+            cursor: pointer;
+            font-size: 17px; 
+            transition: color 0.3s ease, font-weight 0.3s ease; 
+        }
+        .menu-item button:hover {
+            color: #4b3621; 
+        }
+        .menu-item button.clicked {
+            color: #2d2218; 
+            font-weight: bold; 
+        }
+        .price {
+            font-weight: bold; 
+            margin-left: 10px; 
+        }
+        .order-button, .reserve-button {
+            background-color: #8b5a2b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 20px; 
+            margin-top: 10px;
+            border-radius: 5px; 
+            display: block; 
+            margin-left: auto; 
+            margin-right: auto; 
+            transition: background-color 0.3s ease; 
+        }
+        .order-button:hover, .reserve-button:hover {
+            background-color: #6d452700;
+        }
+        .small-button {
+            background-color: #8b5a2b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 20px;
+            margin: 10px auto;
+            display: block;
+            text-align: center;
+        }
+        .small-button:hover {
+            background-color: #6d452700;
+        }
+        form {
+            max-width: 500px;
+            margin: 25px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #scrollToTop {
+            position: fixed;
+            bottom: 15px; 
+            right: 15px; 
+            background-color: rgba(105, 80, 56, 0.697);
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 8px 12px; 
+            cursor: pointer;
+            display: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            font-size: 17px; 
+            line-height: 1.5; 
+        }
+        #scrollToTop:hover {
+            background-color: rgba(139, 90, 43, 1);
+        }
+        footer {
+            background-color: rgba(90, 76, 63, 0.704);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        select {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: white;
+        font-size: 16px;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="káva.png" alt="Logo kavárny">
+            <span> CUP & COMFORT </span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#nabidka">Hlavní nabídka</a></li>
+                <li><a href="#objednavky">Objednávky</a></li>
+                <li><a href="#rezervace">Rezervace</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="#kosik" class="cart-container">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-badge">0</span> 
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <img src="logo.png" alt="Logo kavárny" style="display: block; margin: 20px auto; max-width: 100%; height: auto;">
+
+    <section id="nabidka">
+        <h1>Vítejte</h1>
+        <p>CUP & COMFORT je útulná kavárna v srdci Prahy, kde si můžete vychutnat kvalitní kávu, domácí dezerty a příjemnou atmosféru.</p>
+    </section>
+
+    <section id="menu">
+        <h1>Hlavní nabídka</h1>
+        <h3>Káva & Teplé nápoje</h3>
+        <div class="menu-item"><button onclick="toggleClick(this)">Espresso</button> <span class="price">49 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Espresso Macchiato</button> <span class="price">55 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Cappuccino</button> <span class="price">65 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Caffè Latte</button> <span class="price">75 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Flat White</button> <span class="price">79 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Horká čokoláda</button> <span class="price">69 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Čaj (černý, zelený, ovocný, bylinný)</button> <span class="price">55 Kč</span></div>
+        <br>
+        <h3>Studené nápoje</h3>
+        <div class="menu-item"><button onclick="toggleClick(this)">Ledová káva</button> <span class="price">85 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Frappe</button> <span class="price">89 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Domácí limonáda (citrnová, jahodová, bezová)</button> <span class="price">69 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Čerstvé lisované džusy (pomeračn, jablko, mix)</button> <span class="price">79 Kč</span></div>
+    </section>
+
+    <section id="menu">
+        <h1>Jídla</h1>
+        <h3>Sladké pečivo & Dorty</h3>
+        <div class="menu-item"><button onclick="toggleClick(this)">Domácí croissant</button> <span class="price">49 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Cheesecake (jahodový, čokoládový, mango)</button> <span class="price">85 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Mrkvový dort</button> <span class="price">79 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Tiramisu</button> <span class="price">89 Kč</span></div>
+        <br>
+        <h3>Snídaňové menu & Sendviče</h3>
+        <div class="menu-item"><button onclick="toggleClick(this)">Avokádový toast s vejcem</button> <span class="price">99 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Bageta se šunkou a sýrem</button> <span class="price">85 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Caprese sendvič (mozzarella, rajčata, bazalka)</button> <span class="price">95 Kč</span></div>
+    </section>
+
+    <section id="menu">
+        <h1>Speciální nabídka</h1>
+        <div class="menu-item"><button onclick="toggleClick(this)">Káva + dort dle výběru</button> <span class="price">129 Kč</span></div>
+        <div class="menu-item"><button onclick="toggleClick(this)">Snídaňové menu (káva + croissant + džus)</button> <span class="price">149 Kč</span></div>
+    </section>
+
+    <section id="objednavky">
+        <h1>Objednávky</h1>
+        <form>
+            <input type="text" placeholder="Jméno" required>
+            <label for="kava">Vyberte nápoj/jídlo:</label>
+            <select id="kava" required>
+                <option value="espresso">...</option>
+                <option value="espresso">Espresso</option>
+                <option value="espresso_macchiato">Espresso Macchiato</option>
+                <option value="cappuccino">Cappuccino</option>
+                <option value="latte">Caffè Latte</option>
+                <option value="flatwhite">Flat White</option>
+                <option value="horka_cokolada">Horká čokoláda</option>
+                <option value="caj">Čaj (černý, zelený, ovocný, bylinný)</option>
+                <option value="ledova_kava">Ledová káva</option>
+                <option value="frappe">Frappe</option>
+                <option value="domaci_limonada">Domácí limonáda (citronová, jahodová, bezová)</option>
+                <option value="dzus">Čerstvě lisované džusy (pomeranč, jablko, mix)</option>
+                <option value="croissant">Domácí croissant</option>
+                <option value="cheesecake">Cheesecake (jahodový, čokoládový, mango)</option>
+                <option value="mrkvovy_dort">Mrkvový dort</option>
+                <option value="tiramisu">Tiramisu</option>
+                <option value="avokadovy_toast">Avokádový toast s vejcem</option>
+                <option value="bageta">Bageta se šunkou a sýrem</option>
+                <option value="caprese_sendvic">Caprese sendvič (mozzarella, rajčata, bazalka)</option>
+                <option value="kava_dort">Káva + dort dle výběru</option>
+                <option value="snidane_menu">Snídaně (káva + croissant + džus)</option>
+            </select>
+            <input type="number" placeholder="Počet" required>
+            <button type="submit" class="order-button">Přidat do košíku</button>
+        </form>
+    </section>
+    
+    
+    <section id="rezervace">
+        <h1>Rezervace</h1>
+        <form>
+            <input type="text" placeholder="Jméno" required>
+            <input type="number" placeholder="Počet osob" required>
+            <input type="tel" placeholder="Telefonní číslo" pattern="[0-9]{9}" required>
+            <input type="datetime-local" required>
+            <button type="submit" class="reserve-button">Rezervovat</button>
+        </form>
+    </section>
+
+    <section id="kontakt">
+        <h1>Kontakt</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="flex: 1;">
+                <p><strong>Otevírací doba:</strong></p>
+                <p>Pondělí - Pátek: <strong>7:00 - 20:00</strong></p>
+                <p>Sobota - Neděle: <strong>8:00 - 22:00</strong></p>
+                <p><strong>Adresa:</strong><br>Náměstí Svobody 10, 110 00 Praha</p>
+                <p><strong>E-mail:</strong><br>info@cupandcomfort.cz</p>
+                <p><strong>Telefon:</strong><br>+420 123 456 789</p>
+            </div>
+            <div style="flex: 0 0 auto; text-align: center;">
+                <img src="káva.png" alt="Obrázek kontaktu" style="width: 250px; height: auto; border-radius: 10px; margin-right: 40px; margin-top: -20px; transform: translateX(-30px);">
+            </div>
+        </div>
+    </section>           
+
+    <button id="scrollToTop" onclick="scrollToTop()">Nahoru</button>
+
+    <footer>
+        <p>© 2025 CUP & COMFORT. Všechna práva vyhrazena.</p>
+    </footer>
+
+    <script>
+        function toggleClick(button) {
+            button.classList.toggle("clicked");
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.onscroll = function() {
+            const button = document.getElementById("scrollToTop");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Web je připraven.");
+        });
+    </script>
+</body>
+</html>
